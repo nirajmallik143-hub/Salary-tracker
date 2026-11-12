@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salary Tracker - For UAE Workers</title>
+<style>
+body{font-family:sans-serif;background:#0f172a;color:white;padding:16px}
+.box{background:#1e293b;padding:16px;border-radius:12px;margin-bottom:12px}
+input{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;font-size:16px}
+button{width:100%;padding:12px;background:#22c55e;color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold}
+h1{color:#22c55e} h2{color:#facc15}
+</style>
+</head>
+<body>
+<h1>💰 Salary Tracker</h1>
+<p>Made for workers in UAE - by Niraj</p>
+
+<div class="box">
+<h3>Enter Your Details</h3>
+Salary (AED) <input id="salary" type="number" placeholder="Ex: 2500">
+Loan EMI / Month <input id="emi" type="number" placeholder="Ex: 800">
+Home / Family Sending <input id="home" type="number" placeholder="Ex: 1000">
+Food + Room + Other <input id="other" type="number" placeholder="Ex: 400">
+<button onclick="calc()">Calculate My Money</button>
+</div>
+
+<div class="box">
+<h2 id="result">Your Result Will Show Here</h2>
+<p id="detail"></p>
+</div>
+
+<script>
+function calc(){
+let s = Number(document.getElementById('salary').value||0);
+let e = Number(document.getElementById('emi').value||0);
+let h = Number(document.getElementById('home').value||0);
+let o = Number(document.getElementById('other').value||0);
+let left = s - e - h - o;
+document.getElementById('result').innerText = "Left: " + left + " AED";
+if(left < 0){
+document.getElementById('detail').innerText = "⚠️ You are spending more than salary. Try to reduce one cost this month.";
+} else if(left < 300){
+document.getElementById('detail').innerText = "🟡 Tight month. Try to save even 100 AED. You are doing your best.";
+} else {
+document.getElementById('detail').innerText = "🟢 Good! You can save " + left + " AED this month. Keep going for your family.";
+}
+}
+</script>
+<p style="text-align:center;opacity:0.7">Made by Niraj | UAE Security Guard & Learner</p>
+</body>
+</html>
